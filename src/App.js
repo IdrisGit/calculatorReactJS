@@ -4,6 +4,7 @@ import Wrapper from "./Components/Wrapper";
 import Screen from "./Components/Screen";
 import ButtonBox from "./Components/ButtonBox";
 import Button from "./Components/Button";
+import Result from "./Components/Result";
 
 const btnValues = [
   ["C", "+-", "%", "/"],
@@ -25,7 +26,7 @@ const App =() =>{
   let [calc, setCalc] = useState({
     sign : "",
     num : 0,
-    result : 0,
+    result : "",
   });
 
   //numClickHandler
@@ -41,7 +42,7 @@ const App =() =>{
             : removeSpaces(calc.num)  % 1 === 0 
             ? thousandMarkSpaces(Number(removeSpaces(calc.num + value))) 
             : thousandMarkSpaces(calc.num + value),
-        result : !calc.sign ? 0 : calc.result,
+        result : !calc.sign ? "" : calc.result,
       });
     }
   };
@@ -65,7 +66,7 @@ const App =() =>{
       ...calc,
       sign : value,
       result : !calc.result && calc.num ? calc.num : calc.result,
-      num : 0,
+      num : "",
     });
   };
 
@@ -93,7 +94,7 @@ const App =() =>{
                     )
                   ),
         sign : "",
-        num : 0,
+        num : "",
       });
     }
   };
@@ -127,13 +128,14 @@ const App =() =>{
       ...calc,
       sign : "",
       num : 0,
-      result : 0,
+      result : "",
     });
   };
 
   return(
     <Wrapper>
-      <Screen value = {calc.num ? calc.num : calc.result}/>
+      <Screen value = {calc.num} sign = {calc.sign} result = {calc.result} />
+      <Result result={calc.result} />
       <ButtonBox>
       {
         btnValues.flat().map((btn, i) => {

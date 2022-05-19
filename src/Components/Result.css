@@ -1,0 +1,14 @@
+.result {
+    height: 50px;
+    width: 100%;
+    margin-bottom: 5px;
+    padding: 0 6px;
+    background-color: #435769be;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    color: whitesmoke;
+    font-weight: bold;
+    box-sizing: border-box;
+}
